@@ -1,3 +1,34 @@
-<p>
-  data-entry works!
-</p>
+
+<div class="container">
+    <h3><i>Please enter all details for SDRC-HUB</i></h3>
+      <form [formGroup]="dataEntryForm">
+        <div class="form-group">
+          <label class="center-block">Subject:</label>
+            <input class="form-control" formControlName="subject">
+        </div>
+        <div class="form-group">
+          <label class="center-block">Comment: </label>
+            <input class="form-control" formControlName="comment">
+        </div>
+        <div class="form-group">
+          <label class="center-block">Reference Links:</label>
+            <input class="form-control" formControlName="referenceLinks">
+        </div>
+        <div class="form-group">
+          <label class="center-block">Video Links:</label>
+            <input class="form-control" formControlName="videoLinks">
+        </div>
+        <div class="form-group">
+            <label class="center-block">Tags:</label>
+              <input class="form-control" formControlName="tags">
+        </div>
+        <button type="button" class="btn btn-success" (click)="save()">Save</button>
+        <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+      </form>
+
+    <!-- <p>Form value: {{ heroForm.value | json }}</p>
+    <p>Form value: {{ heroForm.status | json }}</p> -->
+</div>
+
+
+
