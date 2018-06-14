@@ -10,7 +10,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 export class DataServiceService {
 
-  heroesUrl: any ="http://localhost:8080/api/saveData";
+  heroesUrl: any ="http://localhost:8080/api/";
   constructor(private http:HttpClient) {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -18,8 +18,11 @@ export class DataServiceService {
   }
 
   /** POST: add a new hero to the server */
-  addData (hero): Observable<Object> {
-    return this.http.post<Object>(this.heroesUrl, hero)
+  addData (data): Observable<Object> {
+    return this.http.post<Object>(this.heroesUrl+"saveData", data)
   }
-
+  /** GET: get all data from the server */
+  getModulesPlatformsData (): Observable<Object> {
+    return this.http.get<Object>(this.heroesUrl+"getModulesPlatforms")
+  }
 }

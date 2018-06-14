@@ -15,9 +15,10 @@ import { HttpModule } from '@angular/http';
     HttpClientModule,
     HttpModule,
     AppRoutingModule,
-    LayoutModule
+    LayoutModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }

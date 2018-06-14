@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { DataServiceService } from '../services/data-service.service';
+import { RequireValidator } from '../validators/require-validator/require-validator.component';
 declare var $: any;
 @Component({
   selector: 'app-data-entry',
@@ -19,8 +20,12 @@ export class DataEntryComponent implements OnInit {
       comment:  new FormControl('',[Validators.required , Validators.minLength(50)]),
       referenceLinks: ['', Validators.required ],
       videoLinks: ['', Validators.required ],
-      tags: ['', Validators.required ],
+      tags: new FormControl('',[RequireValidator(true)])
     });
+  }
+  
+  passwordMatchValidator(g: FormGroup) {
+    return g.root.get('tags').value == "" ? null : {'required': true};
   }
   ngOnInit(): void {
     
