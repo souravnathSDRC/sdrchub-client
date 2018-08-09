@@ -7,15 +7,12 @@ declare var $: any;
 })
 
 export class HeaderComponent implements OnInit {
-
-  constructor() {
-    // $('#toggle-two').bootstrapToggle({
-    //   on: 'Enabled',
-    //   off: 'Disabled'
-    // });
-   }
+  formtype:boolean=true
+  constructor() { }
 
   ngOnInit() {
   }
-  
+  doSomething(evnt){
+   alert(evnt)
+  }
 }

@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" href="#">Home</a>
   <div class="input-group" id="adv-search">
-      <input type="text" class="form-control" placeholder="Search for snippets" />
+      <input type="text" class="form-control" placeholder="Search" />
       <div class="input-group-btn">
           <div class="btn-group" role="group">
               <div class="dropdown dropdown-lg">
@@ -38,7 +38,7 @@
       </div>
   </div>
   <label class="switch">
-      <input type="checkbox">
+      <input type="checkbox" [(ngModel)]="formtype" (ngModelChange)="doSomething($event)">
       <span class="slider"><span style="padding: 10px;">Entry</span> <span style="padding: 3px;">View</span></span>
   </label>
 </nav>
