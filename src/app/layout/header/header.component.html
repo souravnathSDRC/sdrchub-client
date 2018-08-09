@@ -37,7 +37,7 @@
           </div>
       </div>
   </div>
-  <label class="switch">
+  <label class="switch" *ngIf="showformtype">
       <input type="checkbox" [(ngModel)]="formtype" (ngModelChange)="doSomething($event)">
       <span class="slider"><span style="padding: 10px;">Entry</span> <span style="padding: 3px;">View</span></span>
   </label>

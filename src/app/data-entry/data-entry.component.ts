@@ -2,16 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { DataServiceService } from '../services/data-service.service';
 import { RequireValidator } from '../validators/require-validator/require-validator.component';
+import { Entryforms } from '../interfaces/entryforms';
+import { CommonServiceService } from '../services/common-service.service';
 declare var $: any;
 @Component({
   selector: 'app-data-entry',
   templateUrl: './data-entry.component.html',
   styleUrls: ['./data-entry.component.scss']
 })
+/**
+* @author  Sourav Keshari Nath
+* @version 1.0
+* @since   2018-07-15 
+*/
 export class DataEntryComponent implements OnInit {
   dataEntryForm: FormGroup;
   
-  constructor(private fb: FormBuilder, private dataServiceService:DataServiceService) {
+  constructor(private fb: FormBuilder, 
+    private dataServiceService:DataServiceService,
+    private commonService:CommonServiceService) {
     this.createForm();
   }
   async createForm() {
@@ -32,8 +41,12 @@ export class DataEntryComponent implements OnInit {
   }
   save(){
     if (this.dataEntryForm.valid) {
-       this.dataServiceService.addData(this.dataEntryForm.value)
-       .subscribe(hero => {
+       let formmodel:Entryforms = this.dataEntryForm.value
+       formmodel.moduleId = this.commonService.moduleId
+       formmodel.platformId = this.commonService.platformId
+
+       this.dataServiceService.addData(formmodel)
+       .subscribe(data => {
         $(".toastsuccess").fadeIn('slow');
         setTimeout(function(){
           $(".toastsuccess").fadeOut('slow');

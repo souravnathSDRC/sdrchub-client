@@ -1,29 +1,25 @@
 <div class="container">
     <h2>View</h2>
+    <div class="table-responsive">
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Email</th>
+          <th>Subject</th>
+          <th>Comment</th>
+          <th>Author</th>
+          <th>Reference Links</th>
+          <th>Video Links</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
-        </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
+        <tr *ngFor="let item of viewDataList">
+          <td>{{item.subject}}</td>
+          <td>{{item.comment}}</td>
+          <td>{{item.author}}</td>
+          <td><a href="{{item.referenceLinks}}" target="_blank">{{item.referenceLinks}}</a> </td>
+          <td><a href="{{item.videoLinks}}" target="_blank">{{item.videoLinks}}</a></td>
         </tr>
       </tbody>
     </table>
+  </div>
   </div>

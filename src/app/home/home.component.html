@@ -1,6 +1,6 @@
   <div class="row box-wrraper" >
         <div *ngFor="let item of modulesPlatformsData">
-        <div class="box-shape-round roundbox" *ngIf="item.typeLevelId==1"><div class="roundbox-content" ><div><span  (click)="clickonSubject()">{{item.name}}</span></div></div></div> 
+        <div class="box-shape-round roundbox" *ngIf="item.typeLevelId==1"><div class="roundbox-content" ><div><span  (click)="clickonModule(item.id)">{{item.name}}</span></div></div></div> 
         </div>
   </div>
 
@@ -26,7 +26,7 @@
           <div class="row">
             <div class="col-30" *ngFor="let item of modulesPlatformsData" >
               <div *ngIf="item.typeLevelId==2">
-                      <div class="box-shape-square squarebox"><div class="squarebox-content"><div><span routerLink="data">{{item.name}}</span></div></div></div>
+                      <div class="box-shape-square squarebox"><div class="squarebox-content"><div><span (click)="clickonPlatform(item.id)">{{item.name}}</span></div></div></div>
               </div> 
             </div> 
           </div>
