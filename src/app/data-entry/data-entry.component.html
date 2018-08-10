@@ -1,7 +1,16 @@
-
+<div class="cont_principal">
+    <div class="cont_breadcrumbs">
+      <div class="cont_breadcrumbs_1">
+        <ul class="ullist">
+          <li><a >{{moduleName}}</a></li>
+          <li><a >{{platformName}}</a></li>
+          <li><a >Entry Form</a></li>
+        </ul>
+      </div>  
+    </div>
+</div>
 <div class="container">
-    <h3><i>Entry</i></h3>
-      <form [formGroup]="dataEntryForm">
+      <form [formGroup]="dataEntryForm" style="margin-top: 20px;">
         <div class="form-group">
           <label class="center-block">Subject:</label>
             <textarea class="form-control" formControlName="subject"></textarea>
@@ -26,8 +35,6 @@
         <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
       </form>
       <div class="toastsuccess"><i class="fa fa-check" aria-hidden="true"></i> Saved successfully</div> 
-    <!-- <p>Form value: {{ heroForm.value | json }}</p>
-    <p>Form value: {{ heroForm.status | json }}</p> -->
 </div>
 
 

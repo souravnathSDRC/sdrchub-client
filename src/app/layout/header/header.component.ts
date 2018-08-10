@@ -14,7 +14,7 @@ declare var $: any;
 * @since   2018-07-15 
 */
 export class HeaderComponent implements OnInit {
-  formtype:boolean=true
+  formtype:boolean=false
   showformtype: boolean;
   constructor(private commonService:CommonServiceService,private location: Location, private router: Router) {
     this.router.events.subscribe((res) => { 
@@ -31,9 +31,9 @@ export class HeaderComponent implements OnInit {
   doSomething(event){
     console.log(this.router.url);
     if(event){
-      this.router.navigate(['data']);
-    }else{
       this.router.navigate(['data-view']);
+    }else{
+      this.router.navigate(['data']);
     }
   }
 }

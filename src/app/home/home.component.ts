@@ -20,12 +20,14 @@ export class HomeComponent implements OnInit {
     private router:Router){
     
   }
-  clickonModule(moduleId){
-    this.commonService.moduleId = moduleId
+  clickonModule(module){
+    this.commonService.moduleId = module.id
+    this.commonService.moduleName = module.name
     this.subject = true
   }
-  clickonPlatform(platformId){
-    this.commonService.platformId = platformId
+  clickonPlatform(platform){
+    this.commonService.platformId = platform.id
+    this.commonService.platformName = platform.name
     this.router.navigate(['data']);
   }
   ngOnInit() {

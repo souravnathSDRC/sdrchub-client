@@ -20,7 +20,7 @@ export class DataServiceService {
     };
   }
 
-  /** POST: add a new hero to the server */
+  /** POST: add a new data to the server */
   addData (data): Observable<Object> {
     return this.http.post<Object>(this.url+"saveData", data)
   }

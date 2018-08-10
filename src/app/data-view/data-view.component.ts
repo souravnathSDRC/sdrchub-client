@@ -15,9 +15,13 @@ import { DataServiceService } from '../services/data-service.service';
 */
 export class DataViewComponent implements OnInit {
   viewDataList: Object;
-
+  moduleName:string
+  platformName:string
   constructor(private dataService:DataServiceService,
-  private commonService:CommonServiceService) { }
+  private commonService:CommonServiceService) {
+    this.moduleName = this.commonService.moduleName
+    this.platformName = this.commonService.platformName
+  }
 
   ngOnInit() {
     this.getViewData()

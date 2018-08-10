@@ -17,10 +17,13 @@ declare var $: any;
 */
 export class DataEntryComponent implements OnInit {
   dataEntryForm: FormGroup;
-  
+  moduleName:string
+  platformName:string
   constructor(private fb: FormBuilder, 
     private dataServiceService:DataServiceService,
     private commonService:CommonServiceService) {
+    this.moduleName = this.commonService.moduleName
+    this.platformName = this.commonService.platformName
     this.createForm();
   }
   async createForm() {

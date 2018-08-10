@@ -12,5 +12,7 @@ export class CommonServiceService {
   formtype:boolean=true
   moduleId:number
   platformId:number
+  moduleName: any;
+  platformName: any;
   constructor() { }
 }
