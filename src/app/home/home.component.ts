@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DataServiceService } from '../services/data-service.service';
 import { CommonServiceService } from '../services/common-service.service';
+import { filter } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ModulePlatformModel } from '../models/module-platform.model';
+import { EntryDetails } from '../models/entry-details';
+import { AppService } from '../app.service';
 /**
 * @author  Sourav Keshari Nath
 * @version 1.0
@@ -13,14 +17,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  modulesPlatformsData: Object;
+  modulesPlatformsData: ModulePlatformModel[];
+  module:ModulePlatformModel = {id:0, typeLevelId: 0, name: "", typeLevelName: "", typeOrder: 0}
+  modules: ModulePlatformModel[];
+  platforms: ModulePlatformModel[];
+  platform: ModulePlatformModel;
+  appService: AppService;
+  viewData: EntryDetails[];
   subject:boolean = false
   constructor(private dataService:DataServiceService,
     private commonService:CommonServiceService,
-    private router:Router){
+    private router:Router,
+    private app: AppService){
     
   }
   clickonModule(module){
+    this.module = module;
     this.commonService.moduleId = module.id
     this.commonService.moduleName = module.name
     this.subject = true
@@ -28,7 +40,7 @@ export class HomeComponent implements OnInit {
   clickonPlatform(platform){
     this.commonService.platformId = platform.id
     this.commonService.platformName = platform.name
-    this.router.navigate(['data']);
+    this.router.navigate(['entry']);
   }
   ngOnInit() {
     this.getModulesPlatformsData()
@@ -37,6 +49,14 @@ export class HomeComponent implements OnInit {
     this.dataService.getModulesPlatformsData()
     .subscribe(data => {
      this.modulesPlatformsData = data;
+     this.modules = data.filter((d) => {
+       return d.typeLevelId == 1;
+     });
+     this.platforms = data.filter((d) => {
+      return d.typeLevelId == 2;
+    });
+    console.log(this.modules);
+    
     });
   }
 }

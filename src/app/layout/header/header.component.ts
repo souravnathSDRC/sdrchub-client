@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonServiceService } from '../../services/common-service.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { AppService } from '../../app.service';
 declare var $: any;
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
   formtype:boolean=false
   showformtype: boolean;
-  constructor(private commonService:CommonServiceService,private location: Location, private router: Router) {
+  constructor(private commonService:CommonServiceService,private location: Location, private router: Router,private appService: AppService) {
     this.router.events.subscribe((res) => { 
     if(this.router.url != "/"){
         this.showformtype = true
@@ -31,9 +32,12 @@ export class HeaderComponent implements OnInit {
   doSomething(event){
     console.log(this.router.url);
     if(event){
-      this.router.navigate(['data-view']);
+      this.router.navigate(['view']);
     }else{
-      this.router.navigate(['data']);
+      this.router.navigate(['entry']);
     }
+  }
+  logout(){
+    this.appService.logout()
   }
 }

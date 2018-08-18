@@ -1,0 +1,42 @@
+
+
+<div class="login-form-container">
+    <header class="col-md-12 login-header" style="text-align:center;"><strong>User Login</strong>
+    </header>
+  <div class="container-body">     
+     <form (submit)="login()" [noValidate]="false">  
+    <div class="row">
+        <div class="col">
+            <div class="form-group login-formgroup">
+                <label for="usr">Username:</label>
+                <input type="text" name="username" class="form-control" [(ngModel)]="credentials.username" placeholder="" id="usr" required>            
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group login-formgroup">
+                <label for="pwd">Password:</label>
+                <input type="password" name="password" class="form-control" [(ngModel)]="credentials.password" placeholder="" id="pwd" required>            
+            </div>
+        </div>
+    </div>
+    <div class="form-group row login-formgroup">
+      <div class="col">
+        <button class="btn btn-default login-submit form-control" type="submit">Submit</button>
+      </div>
+    </div>
+</form>
+    <!-- <div class='row'>
+      <div class='col'>
+          <a data-toggle="modal" data-target="#basicExample" (click)="side.show()" mdbRippleRadius>Forgot password ?</a>
+      </div>
+    </div> -->
+    <div class="row error-message">
+        <div class="col">
+                <b>Wrong username/password entered</b>
+        </div>
+        
+    </div>
+  </div>
+</div>

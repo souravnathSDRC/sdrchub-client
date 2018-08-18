@@ -107,3 +107,6 @@ input:checked + .slider:before {
   -ms-transform: translateX(50px);
   transform: translateX(50px);
 }
+label {
+    margin-bottom: 0rem;
+}

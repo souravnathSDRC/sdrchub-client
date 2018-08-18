@@ -1,59 +1,36 @@
-  <div class="row box-wrraper" >
-        <div *ngFor="let item of modulesPlatformsData">
-        <div class="box-shape-round roundbox" *ngIf="item.typeLevelId==1"><div class="roundbox-content" ><div><span  (click)="clickonModule(item)">{{item.name}}</span></div></div></div> 
-        </div>
-  </div>
-
-  <div class="container" *ngIf="subject">
-      <!--path between 1-2-->
-      <div class="row timeline">
-          <div class="col-2">
-              <div class="corner right-bottom"></div>
+<div class="row box-wrraper" >
+  <div class="col-md-12" >
+    <div class="module-container" [ngClass]="module.name">
+      <div *ngFor="let item of modules" class="modules"  [ngClass]="item.id == 1?'sop': item.id == 2?'poc': item.id==3?'error': item.id==4? 'document': item.id==5?'pos': ''">
+        <div class="box-shape-round roundbox">
+          <div >
+            <div class="roundbox-content">
+              <div>
+              <span  (click)="clickonModule(item)">{{item.name}}</span>
             </div>
-        <div class="col-8">
-          <hr/>
-        </div>
-        <div class="col-2">
-          <div class="corner left-bottom"></div>
-        </div>
-      </div>
-      <!--second section-->
-      <div class="row align-items-center justify-content-end how-it-works d-flex">
-        <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-          <div class="circle font-weight-bold"></div>
-        </div>
-        <div class="col-6">
-          <div class="row">
-            <div class="col-30" *ngFor="let item of modulesPlatformsData" >
-              <div *ngIf="item.typeLevelId==2">
-                      <div class="box-shape-square squarebox"><div class="squarebox-content"><div><span (click)="clickonPlatform(item)">{{item.name}}</span></div></div></div>
-              </div> 
-            </div> 
+            </div>
           </div>
-        </div>
-        <div class="col-2 text-center full d-inline-flex justify-content-center align-items-center">
-          <div class="circle font-weight-bold"></div>
-        </div>
-      </div>
-      <!--path between 2-3-->
-      <div class="row timeline">
-          <div class="col-2">
-              <div class="corner top-right"></div>
-            </div>
-
-        <div class="col-8">
-          <hr/>
-        </div>
-        <div class="col-2">
-          <div class="corner top-left"></div>
-        </div>
+          <div class="module-connector"></div>
+        </div> 
+        
       </div>
     </div>
-
-
-
-  <!-- <div class="row box-wrraper" *ngIf="subject">
-        <div class="col-xs-6 col-sm-8 col-lg-10" >
-          <div class="box-shape-square squarebox"><div class="squarebox-content"><div><span routerLink="data">JAVA</span></div></div></div>
+    <div class="platform-container" [ngClass]="module.name">
+      <div class="platform-border platform-border-left">
+        <div class="relative-div"></div>
+        <div class="absolute-div"></div>
+      </div>
+      <div class="platform-boxes">
+        <div *ngFor="let platform of platforms" class="platforms">
+          <div class="box-shape-square" (click)="clickonPlatform(platform)">
+            <span>{{platform.name}}</span>
+          </div>
         </div>
-  </div> -->
+      </div>  
+      <div class="platform-border platform-border-right">
+        <div class="relative-div"></div>
+        <div class="absolute-div"></div>
+      </div>
+    </div>
+  </div>
+</div>

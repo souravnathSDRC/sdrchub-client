@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import {Http, Headers} from '@angular/http';
+import { ModulePlatformModel } from '../models/module-platform.model';
+import { EntryDetails } from '../models/entry-details';
+
 
 
 @Injectable({
@@ -14,21 +18,24 @@ import { catchError, map, tap } from 'rxjs/operators';
 */
 export class DataServiceService {
   url: any ="http://localhost:8080/api/";
-  constructor(private http:HttpClient) {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
-  }
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Basic ' + btoa('laxman' + ':' + 'sdrc@123#!')
+    })
+  };
+  constructor(private http:HttpClient) {}
 
   /** POST: add a new data to the server */
   addData (data): Observable<Object> {
-    return this.http.post<Object>(this.url+"saveData", data)
+    return this.http.post<Object>("/api/saveData", data,this.httpOptions)
   }
   /** GET: get all data from the server */
-  getModulesPlatformsData (): Observable<Object> {
-    return this.http.get<Object>(this.url+"getModulesPlatforms")
+  getModulesPlatformsData (): Observable<ModulePlatformModel[]> {
+    return this.http.get<ModulePlatformModel[]>("/api/getModulesPlatforms")
   }
-  getViewData(moduleId,platformId): Observable<Object> {
-    return this.http.get<Object>(this.url+"viewData?moduleId="+ moduleId +"&platformId="+ platformId)
+  getViewData(moduleId,platformId): Observable<EntryDetails[]> {
+    return this.http.get<EntryDetails[]>(this.url+"viewData?moduleId="+ moduleId +"&platformId="+ platformId)
   }
 }
